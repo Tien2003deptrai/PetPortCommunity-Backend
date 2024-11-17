@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v3 # Sử dụng phiên bản mới nhất của checkout
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3 # Cập nhật lên setup-node v3
+        with:
+          node-version: '20' # Sử dụng phiên bản Node.js 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
