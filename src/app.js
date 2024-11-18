@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const { limiter, corsOptions, passport } = require('./utils');
 const setupSwaggerDocs = require('./swagger/swagger');
 require('module-alias/register');
-require('./utils/scheduleBackup');
+// require('./utils/scheduleBackup');
 
 require('dotenv').config();
 
@@ -16,8 +16,6 @@ require('dotenv').config();
 const { noCacheMiddleware } = require('./middlewares');
 
 // Models
-const { Pet, Category } = require('./models');
-
 // Initialize app
 const app = express();
 

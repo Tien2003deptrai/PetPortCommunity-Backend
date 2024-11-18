@@ -1,21 +1,26 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const {
-  sendVerificationEmail,
-  sendResetSuccessEmail,
   sendPasswordResetEmail,
-} = require('~/mail/emails');
-const userRepo = require('~/repository/UserRepository');
+  sendVerificationEmail,
+  sendWelcomeEmail,
+  sendResetSuccessEmail,
+} = require('../mail/emails');
+const { generateRefreshTokenAndSetCookie, generateToken } = require('~/utils/generateToken');
+const UserRepository = require('~/repository/UserRepository');
+const { Op } = require('sequelize');
 
 class UserService {
-  async registerUser({ username, password, email }) {
-    const existingUser = await userRepo.findUserByEmailOrUsername(email, username);
+  async register(data, res) {
+    const { username, password, email } = data;
+
+    const existingUser = await UserRepository.findOneByCondition({ [Op.or]: [{ email }] });
     if (existingUser) throw new Error('Username or email already taken');
 
+    // Tạo người dùng mới
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
-
-    const newUser = await userRepo.createUser({
+    const newUser = await UserRepository.create({
       username,
       password: hashedPassword,
       email,
@@ -23,88 +28,120 @@ class UserService {
       verification_token_expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
 
+    generateRefreshTokenAndSetCookie(res, newUser.id);
     await sendVerificationEmail(newUser.email, verificationToken);
+
     return newUser;
   }
 
   async verifyEmail(code) {
-    const user = await userRepo.findUserByVerificationCode(code);
+    const user = await UserRepository.findOneByCondition({
+      verification_token: code,
+      verification_token_expires_at: { [Op.gt]: new Date() },
+    });
+
     if (!user) throw new Error('Invalid or expired verification code');
 
     user.is_verified = true;
     user.verification_token = null;
     user.verification_token_expires_at = null;
-    await user.save();
+
+    await UserRepository.save(user);
+    await sendWelcomeEmail(user.email, user.username);
+
     return user;
   }
 
-  async login(email, password) {
-    const user = await userRepo.findUserByEmailOrUsername(email, null);
+  async login(data, res) {
+    const { email, password } = data;
+
+    const user = await UserRepository.findOneByCondition({ email });
     if (!user || !(await bcrypt.compare(password, user.password))) {
       throw new Error('Invalid credentials');
     }
-    return user;
+
+    const { token, expiresAt } = generateToken(user.id, user.role);
+    generateRefreshTokenAndSetCookie(res, user.id);
+
+    user.lastLogin = new Date();
+    await UserRepository.save(user);
+
+    return { token, expiresAt, user };
+  }
+
+  async forgotPassword(email) {
+    const user = await UserRepository.findOneByCondition({ email });
+    if (!user) throw new Error('User not found');
+
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    user.reset_password_token = resetToken;
+    user.reset_password_expires_at = Date.now() + 1 * 60 * 60 * 1000;
+
+    await UserRepository.save(user);
+
+    await sendPasswordResetEmail(
+      user.email,
+      `${process.env.FRONTEND_URL}/reset-password/${resetToken}`
+    );
+    return { success: true };
   }
 
   async resetPassword(token, newPassword) {
-    const user = await userRepo.findUserByResetToken(token);
+    const user = await UserRepository.findOneByCondition({
+      reset_password_token: token,
+      reset_password_expires_at: { [Op.gt]: new Date() },
+    });
+
     if (!user) throw new Error('Invalid or expired reset token');
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     user.reset_password_token = null;
     user.reset_password_expires_at = null;
-    await user.save();
 
+    await UserRepository.save(user);
     await sendResetSuccessEmail(user.email);
-  }
 
-  async forgotPassword(email) {
-    const user = await userRepo.findUserByEmailOrUsername(email, null);
-    if (!user) throw new Error('User not found');
-
-    const resetToken = crypto.randomBytes(20).toString('hex');
-    user.reset_password_token = resetToken;
-    user.reset_password_expires_at = new Date(Date.now() + 60 * 60 * 1000);
-    await user.save();
-
-    await sendPasswordResetEmail(
-      user.email,
-      `${process.env.FRONTEND_URL}/reset-password/${resetToken}`
-    );
-  }
-
-  async getUserById(id) {
-    const user = await userRepo.findUserById(id);
-    if (!user) throw new Error('User not found');
-    return user;
+    return { success: true };
   }
 
   async getDoctors() {
-    const doctors = await userRepo.findDoctors();
-    if (!doctors || doctors.length === 0) throw new Error('No doctors found');
-    return doctors;
+    const users = await UserRepository.findAllUsers();
+
+    const doctorUsers = users.filter(user => {
+      if (Array.isArray(user.role)) {
+        return user.role.includes('Doctor');
+      }
+      return false;
+    });
+
+    if (doctorUsers.length === 0) {
+      throw new Error('No doctors found');
+    }
+
+    return doctorUsers;
   }
 
-  async updateUserInfo(id, data) {
-    const user = await userRepo.findUserById(id);
+  async updateUserInfo(userId, data) {
+    const user = await UserRepository.findById(userId);
     if (!user) throw new Error('User not found');
-    return userRepo.updateUserById(id, data);
+
+    await user.update(data);
+    return user;
   }
 
-  async refreshAccessToken(refreshToken) {
-    if (!refreshToken) {
-      throw new Error('No refresh token provided');
-    }
+  async deleteUser(userId) {
+    await UserRepository.deleteById(userId);
+    return { message: 'User deleted successfully' };
+  }
 
-    try {
-      const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
-      const { token: newAccessToken, expiresAt } = generateToken(decoded.userId, decoded.role);
-      return { newAccessToken, expiresAt };
-    } catch (error) {
-      console.error('Error verifying refresh token:', error);
-      throw new Error('Invalid refresh token');
-    }
+  async getUserById(userId) {
+    const user = await UserRepository.findById(userId, {
+      attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
+    });
+
+    if (!user) throw new Error('User not found');
+    return user;
   }
 }
 
