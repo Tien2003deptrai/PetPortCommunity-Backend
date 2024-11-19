@@ -48,7 +48,6 @@ class AppointmentService {
     const options = { order: [['appointment_date', 'ASC']] };
     return appointmentRepo.findAppointmentsByPetOwner(petOwnerId, options);
   }
-
   async getAppointmentsByDoctor(doctorId) {
     const options = { order: [['appointment_date', 'ASC']] };
     return appointmentRepo.findAppointmentsByDoctor(doctorId, options);
@@ -57,6 +56,18 @@ class AppointmentService {
   async getAppointmentsByStatus(status) {
     const options = { order: [['appointment_date', 'ASC']] };
     return appointmentRepo.findAppointmentsByStatus(status, options);
+  }
+
+  async checkAppointmentConflict(data) {
+    const { doctor_id, appointment_date } = data;
+    const startDate = new Date(appointment_date);
+    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 giờ
+
+    const conflict = await appointmentRepo.checkAppointmentConflict(doctor_id, startDate, endDate);
+    if (conflict.length > 0) {
+      return 'Xung đột với các cuộc hẹn hiện có';
+    }
+    return 'Không có xung đột';
   }
 }
 

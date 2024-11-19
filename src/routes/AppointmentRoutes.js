@@ -32,4 +32,10 @@ router.get(
   AppointmentController.getByStatus
 );
 
+router.post(
+  '/check-conflict',
+  validate(AppointmentValidation.checkAppointmentConflict),
+  AppointmentController.checkConflict
+);
+
 module.exports = router;

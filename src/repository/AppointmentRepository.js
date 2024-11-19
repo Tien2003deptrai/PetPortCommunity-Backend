@@ -67,14 +67,46 @@ class AppointmentRepository {
   async findAppointmentsByPetOwner(petOwnerId, options) {
     return Appointment.findAll({
       where: { pet_owner_id: petOwnerId },
-      ...options,
+      include: [
+        {
+          model: Pet,
+          as: 'Pet',
+          include: [
+            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
+          ],
+        },
+        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+      ],
     });
   }
 
   async findAppointmentsByDoctor(doctorId, options) {
     return Appointment.findAll({
       where: { doctor_id: doctorId },
-      ...options,
+      include: [
+        {
+          model: Pet,
+          as: 'Pet',
+          include: [
+            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
+          ],
+        },
+        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+      ],
+    });
+  }
+
+  async checkAppointmentConflict(doctorId, startDate, endDate) {
+    return Appointment.findAll({
+      where: {
+        doctor_id: doctorId,
+        appointment_date: {
+          [Op.lt]: endDate,
+          [Op.gte]: startDate,
+        },
+      },
     });
   }
 }
