@@ -3,10 +3,10 @@ const UserService = require('~/service/UserService');
 const UserController = {
   async register(req, res, next) {
     try {
-      const newUser = await UserService.register(req.body, res);
+      const newUser = await UserService.register(req.body, res); // Gọi Service layer
       res.status(201).json({ success: true, user: newUser });
     } catch (error) {
-      next(error);
+      next(error); // Chuyển lỗi tới middleware
     }
   },
 

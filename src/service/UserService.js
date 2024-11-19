@@ -14,12 +14,15 @@ class UserService {
   async register(data, res) {
     const { username, password, email } = data;
 
+    // Gọi Repository để kiểm tra người dùng tồn tại
     const existingUser = await UserRepository.findOneByCondition({ [Op.or]: [{ email }] });
     if (existingUser) throw new Error('Username or email already taken');
 
-    // Tạo người dùng mới
+    // Hash mật khẩu
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Tạo người dùng mới thông qua Repository
     const newUser = await UserRepository.create({
       username,
       password: hashedPassword,
