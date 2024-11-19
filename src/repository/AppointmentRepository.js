@@ -77,18 +77,6 @@ class AppointmentRepository {
       ...options,
     });
   }
-
-  async checkAppointmentConflict(doctorId, startDate, endDate) {
-    return Appointment.findAll({
-      where: {
-        doctor_id: doctorId,
-        appointment_date: {
-          [Op.lt]: endDate,
-          [Op.gte]: startDate,
-        },
-      },
-    });
-  }
 }
 
 module.exports = new AppointmentRepository();
