@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `idx_petOwner_id` (`petOwner_Id`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`petOwner_Id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: coupons
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `orderitems` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: orders
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`id`),
   KEY `petOwner_id` (`petOwner_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`petOwner_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: payments
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: pets
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   CONSTRAINT `reviews_ibfk_3` FOREIGN KEY (`reviewer_id`) REFERENCES `users` (`id`) ON DELETE
   SET
   NULL ON UPDATE CASCADE
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: users
@@ -332,8 +332,8 @@ VALUES
     '09:00:00',
     'Đã đặt lịch',
     'Khám sức khỏe định kỳ cho Lucky',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -358,8 +358,8 @@ VALUES
     '14:30:00',
     'Đã đặt lịch',
     'Kiểm tra sức khỏe cho Miu',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -384,8 +384,8 @@ VALUES
     '11:00:00',
     'Đã đặt lịch',
     'Tiêm phòng cho Bông',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -410,8 +410,8 @@ VALUES
     '16:00:00',
     'Đã đặt lịch',
     'Khám răng cho Nhi',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -436,8 +436,8 @@ VALUES
     '10:00:00',
     'Đã đặt lịch',
     'Kiểm tra sức khỏe cho Chích Chòe',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -462,8 +462,8 @@ VALUES
     '13:30:00',
     'Đã đặt lịch',
     'Khám bệnh cho Kỳ Nhông',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -488,8 +488,8 @@ VALUES
     '15:00:00',
     'Đã đặt lịch',
     'Tiêm phòng cho Rex',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -514,8 +514,8 @@ VALUES
     '08:30:00',
     'Đã đặt lịch',
     'Khám sức khỏe cho Mèo Mun',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -540,8 +540,8 @@ VALUES
     '14:00:00',
     'Đã đặt lịch',
     'Kiểm tra sức khỏe cho Vành Khuyên',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `appointments` (
@@ -566,8 +566,8 @@ VALUES
     '09:30:00',
     'Đã đặt lịch',
     'Khám định kỳ cho Bé Tròn',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -589,8 +589,8 @@ VALUES
     'Chó',
     'Thú cưng',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -607,8 +607,8 @@ VALUES
     'Mèo',
     'Thú cưng',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -625,8 +625,8 @@ VALUES
     'Chích ngừa',
     'Dịch vụ',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -643,8 +643,8 @@ VALUES
     'Chăm sóc lông',
     'Dịch vụ',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -661,8 +661,8 @@ VALUES
     'Thức ăn',
     'Sản phẩm',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -679,8 +679,8 @@ VALUES
     'Đồ chơi',
     'Sản phẩm',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -697,8 +697,8 @@ VALUES
     'Thực phẩm bổ sung',
     'Sản phẩm',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -715,8 +715,8 @@ VALUES
     'Chim cảnh',
     'Thú cưng',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -733,8 +733,8 @@ VALUES
     'Bò sát',
     'Thú cưng',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `categories` (
@@ -751,8 +751,8 @@ VALUES
     'Phụ kiện',
     'Sản phẩm',
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -774,8 +774,8 @@ VALUES
     1,
     4,
     'Cảm ơn bạn đã chia sẻ kinh nghiệm hữu ích!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -792,8 +792,8 @@ VALUES
     2,
     3,
     'Mình cũng nuôi mèo, rất đồng cảm với bạn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -810,8 +810,8 @@ VALUES
     3,
     7,
     'Thật tuyệt! Chó của bạn rất đáng yêu!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -828,8 +828,8 @@ VALUES
     4,
     10,
     'Chăm sóc chim đúng cách sẽ giúp chúng sống lâu hơn.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -846,8 +846,8 @@ VALUES
     5,
     4,
     'Thực phẩm bổ sung thực sự quan trọng cho sức khỏe thú cưng.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -864,8 +864,8 @@ VALUES
     6,
     3,
     'Mèo của tôi cũng thích đồ chơi này, rất vui nhộn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -882,8 +882,8 @@ VALUES
     7,
     10,
     'Rottweiler của bạn rất khỏe mạnh và trung thành.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -900,8 +900,8 @@ VALUES
     8,
     7,
     'Cảm ơn đã chia sẻ kinh nghiệm chăm sóc kỳ nhông.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -918,8 +918,8 @@ VALUES
     9,
     4,
     'Chim vành khuyên rất đáng yêu, cảm ơn bạn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `comments` (
@@ -936,188 +936,8 @@ VALUES
     10,
     3,
     'Rùa cạn cần môi trường sống đặc biệt, cảm ơn bạn đã chia sẻ.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    11,
-    1,
-    4,
-    'Cảm ơn bạn đã chia sẻ kinh nghiệm hữu ích!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    12,
-    2,
-    3,
-    'Mình cũng nuôi mèo, rất đồng cảm với bạn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    13,
-    3,
-    7,
-    'Thật tuyệt! Chó của bạn rất đáng yêu!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    14,
-    4,
-    10,
-    'Chăm sóc chim đúng cách sẽ giúp chúng sống lâu hơn.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    15,
-    5,
-    4,
-    'Thực phẩm bổ sung thực sự quan trọng cho sức khỏe thú cưng.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    16,
-    6,
-    3,
-    'Mèo của tôi cũng thích đồ chơi này, rất vui nhộn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    17,
-    7,
-    10,
-    'Rottweiler của bạn rất khỏe mạnh và trung thành.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    18,
-    8,
-    7,
-    'Cảm ơn đã chia sẻ kinh nghiệm chăm sóc kỳ nhông.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    19,
-    9,
-    4,
-    'Chim vành khuyên rất đáng yêu, cảm ơn bạn!',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `comments` (
-    `id`,
-    `post_id`,
-    `petOwner_Id`,
-    `content`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    20,
-    10,
-    3,
-    'Rùa cạn cần môi trường sống đặc biệt, cảm ơn bạn đã chia sẻ.',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -1149,8 +969,8 @@ VALUES
     '2024-12-31 00:00:00',
     1,
     1,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1177,8 +997,8 @@ VALUES
     '2024-11-30 00:00:00',
     1,
     2,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1205,8 +1025,8 @@ VALUES
     '2024-12-15 00:00:00',
     1,
     3,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1233,8 +1053,8 @@ VALUES
     '2024-11-30 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1261,8 +1081,8 @@ VALUES
     '2024-10-31 00:00:00',
     1,
     2,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1289,8 +1109,8 @@ VALUES
     '2024-12-31 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1317,8 +1137,8 @@ VALUES
     '2024-12-31 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1345,8 +1165,8 @@ VALUES
     '2024-11-25 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1373,8 +1193,8 @@ VALUES
     '2024-12-25 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `coupons` (
@@ -1401,8 +1221,8 @@ VALUES
     '2025-01-05 00:00:00',
     1,
     NULL,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -1428,8 +1248,8 @@ VALUES
     1,
     300000.00,
     300000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1450,8 +1270,8 @@ VALUES
     1,
     120000.00,
     120000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1472,8 +1292,8 @@ VALUES
     1,
     180000.00,
     180000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1494,8 +1314,8 @@ VALUES
     1,
     70000.00,
     70000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1516,8 +1336,8 @@ VALUES
     1,
     220000.00,
     220000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1538,8 +1358,8 @@ VALUES
     1,
     100000.00,
     100000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1560,8 +1380,8 @@ VALUES
     1,
     90000.00,
     90000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1582,8 +1402,8 @@ VALUES
     1,
     150000.00,
     150000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1604,8 +1424,8 @@ VALUES
     1,
     300000.00,
     300000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orderitems` (
@@ -1626,162 +1446,8 @@ VALUES
     1,
     250000.00,
     250000.00,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    11,
-    11,
-    3,
-    2,
-    250000.00,
-    500000.00,
-    '2024-11-20 04:39:26',
-    '2024-11-20 04:39:26'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    12,
-    12,
-    3,
-    2,
-    250000.00,
-    500000.00,
-    '2024-11-20 05:02:56',
-    '2024-11-20 05:02:56'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    13,
-    13,
-    3,
-    2,
-    250000.00,
-    500000.00,
-    '2024-11-20 05:03:14',
-    '2024-11-20 05:03:14'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    14,
-    14,
-    3,
-    2,
-    250000.00,
-    500000.00,
-    '2024-11-20 05:04:18',
-    '2024-11-20 05:04:18'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    15,
-    15,
-    3,
-    2,
-    250000.00,
-    500000.00,
-    '2024-11-20 05:13:44',
-    '2024-11-20 05:13:44'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    16,
-    16,
-    8,
-    1,
-    90000.00,
-    90000.00,
-    '2024-11-20 05:16:48',
-    '2024-11-20 05:16:48'
-  );
-INSERT INTO
-  `orderitems` (
-    `id`,
-    `order_id`,
-    `product_id`,
-    `quantity`,
-    `unit_price`,
-    `subtotal`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    17,
-    17,
-    2,
-    1,
-    120000.00,
-    120000.00,
-    '2024-11-20 05:28:02',
-    '2024-11-20 05:28:02'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -1803,8 +1469,8 @@ VALUES
     3,
     300000.00,
     'Đang xử lý',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1821,8 +1487,8 @@ VALUES
     4,
     120000.00,
     'Chờ thanh toán',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1839,8 +1505,8 @@ VALUES
     7,
     180000.00,
     'Hoàn thành',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1857,8 +1523,8 @@ VALUES
     10,
     70000.00,
     'Hủy',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1875,8 +1541,8 @@ VALUES
     3,
     220000.00,
     'Đang xử lý',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1893,8 +1559,8 @@ VALUES
     4,
     100000.00,
     'Hoàn thành',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1911,8 +1577,8 @@ VALUES
     7,
     90000.00,
     'Đã giao',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1929,8 +1595,8 @@ VALUES
     10,
     150000.00,
     'Đã giao',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1947,8 +1613,8 @@ VALUES
     3,
     300000.00,
     'Đang vận chuyển',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `orders` (
@@ -1965,134 +1631,8 @@ VALUES
     4,
     250000.00,
     'Chờ thanh toán',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    11,
-    1,
-    500000.00,
-    'Đang xử lý',
-    '2024-11-20 04:39:26',
-    '2024-11-20 04:39:26'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    12,
-    1,
-    500000.00,
-    'Đang xử lý',
-    '2024-11-20 05:02:56',
-    '2024-11-20 05:02:56'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    13,
-    1,
-    500000.00,
-    'Đang xử lý',
-    '2024-11-20 05:03:14',
-    '2024-11-20 05:03:14'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    14,
-    1,
-    500000.00,
-    'Đang xử lý',
-    '2024-11-20 05:04:18',
-    '2024-11-20 05:04:18'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    15,
-    1,
-    500000.00,
-    'Đang xử lý',
-    '2024-11-20 05:13:44',
-    '2024-11-20 05:13:44'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    16,
-    1,
-    90000.00,
-    'Đang xử lý',
-    '2024-11-20 05:16:48',
-    '2024-11-20 05:16:48'
-  );
-INSERT INTO
-  `orders` (
-    `id`,
-    `petOwner_id`,
-    `total_amount`,
-    `status`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    17,
-    1,
-    120000.00,
-    'Đang xử lý',
-    '2024-11-20 05:28:02',
-    '2024-11-20 05:28:02'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -2120,8 +1660,8 @@ VALUES
     'Hoàn thành',
     'TXVN123456',
     '2024-10-15 10:30:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2144,8 +1684,8 @@ VALUES
     'Chờ xử lý',
     'TXVN654321',
     '2024-10-16 11:00:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2168,8 +1708,8 @@ VALUES
     'Hoàn thành',
     'TXVN789012',
     '2024-10-17 09:45:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2192,8 +1732,8 @@ VALUES
     'Hủy',
     'TXVN345678',
     '2024-10-18 13:15:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2216,8 +1756,8 @@ VALUES
     'Đang xử lý',
     'TXVN901234',
     '2024-10-19 08:20:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2240,8 +1780,8 @@ VALUES
     'Hoàn thành',
     'TXVN567890',
     '2024-10-20 15:00:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2264,8 +1804,8 @@ VALUES
     'Chờ xác nhận',
     'TXVN234567',
     '2024-10-21 16:45:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2288,8 +1828,8 @@ VALUES
     'Đã giao',
     'TXVN678901',
     '2024-10-22 17:30:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2312,8 +1852,8 @@ VALUES
     'Đang vận chuyển',
     'TXVN890123',
     '2024-10-23 14:10:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `payments` (
@@ -2336,104 +1876,8 @@ VALUES
     'Chờ thanh toán',
     'TXVN456789',
     '2024-10-24 19:00:00',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
-  );
-INSERT INTO
-  `payments` (
-    `id`,
-    `order_id`,
-    `amount`,
-    `payment_method`,
-    `status`,
-    `transaction_id`,
-    `payment_date`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    11,
-    14,
-    500000.00,
-    'Credit Card',
-    'Đang xử lý',
-    'cs_test_a1M0xs3OJz1H5j4Dw2h4ZdTuO6odozwdOiFDkDqNjYDnsMTmBdJxsEnZIj',
-    '2024-11-20 05:04:19',
-    '2024-11-20 05:04:19',
-    '2024-11-20 05:04:19'
-  );
-INSERT INTO
-  `payments` (
-    `id`,
-    `order_id`,
-    `amount`,
-    `payment_method`,
-    `status`,
-    `transaction_id`,
-    `payment_date`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    12,
-    15,
-    500000.00,
-    'Credit Card',
-    'Đang xử lý',
-    'cs_test_a1WxvRBqrxXoB8rzvbnImRx5x66NkdY0mmbzqMepadIQoC2cBiXMiRgfPy',
-    '2024-11-20 05:13:45',
-    '2024-11-20 05:13:45',
-    '2024-11-20 05:13:45'
-  );
-INSERT INTO
-  `payments` (
-    `id`,
-    `order_id`,
-    `amount`,
-    `payment_method`,
-    `status`,
-    `transaction_id`,
-    `payment_date`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    13,
-    16,
-    90000.00,
-    'Credit Card',
-    'Đang xử lý',
-    'cs_test_a11MWkK0b4GznGAzW0ySPJO2SMAu71TTcGjKuwY6g3u100nQw79vc1zmNH',
-    '2024-11-20 05:16:49',
-    '2024-11-20 05:16:49',
-    '2024-11-20 05:16:49'
-  );
-INSERT INTO
-  `payments` (
-    `id`,
-    `order_id`,
-    `amount`,
-    `payment_method`,
-    `status`,
-    `transaction_id`,
-    `payment_date`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    14,
-    17,
-    120000.00,
-    'Credit Card',
-    'Đang xử lý',
-    'cs_test_a1XbqHP7TbBGSStIJlT6HMQbeMsdSDNmyrGzkwy94VPXTJROIZkUqxKecW',
-    '2024-11-20 05:28:03',
-    '2024-11-20 05:28:03',
-    '2024-11-20 05:28:03'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -2469,8 +1913,8 @@ VALUES
     'Chích ngừa đầy đủ',
     1,
     'https://example.com/lucky_phoc_soc.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2501,8 +1945,8 @@ VALUES
     'Đã chích ngừa dại',
     1,
     'https://example.com/miu_ba_tu.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2533,8 +1977,8 @@ VALUES
     'Chích ngừa sổ giun',
     1,
     'https://example.com/bong_chihuahua.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2565,8 +2009,8 @@ VALUES
     'Đã chích ngừa',
     1,
     'https://example.com/nhi_aln.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2597,8 +2041,8 @@ VALUES
     'Không có bệnh',
     1,
     'https://example.com/chich_choe.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2629,8 +2073,8 @@ VALUES
     'Kiểm tra sức khỏe thường xuyên',
     1,
     'https://example.com/ky_nhong.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2661,8 +2105,8 @@ VALUES
     'Đã tiêm phòng dại',
     1,
     'https://example.com/rex_rottweiler.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2693,8 +2137,8 @@ VALUES
     'Không có bệnh',
     1,
     'https://example.com/meo_mun.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2725,8 +2169,8 @@ VALUES
     'Không có bệnh',
     1,
     'https://example.com/vanh_khuyen.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `pets` (
@@ -2757,8 +2201,8 @@ VALUES
     'Khám định kỳ hàng năm',
     1,
     'https://example.com/rua_can.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -2784,8 +2228,8 @@ VALUES
     'Chó của tôi rất đáng yêu và dễ thương...',
     'https://example.com/post1.jpg',
     15,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2806,8 +2250,8 @@ VALUES
     'Mèo cần phải chải lông thường xuyên để giữ sạch sẽ...',
     'https://example.com/post2.jpg',
     22,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2828,8 +2272,8 @@ VALUES
     'Mỗi ngày chơi với cún giúp tăng sự gắn kết...',
     'https://example.com/post3.jpg',
     18,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2850,8 +2294,8 @@ VALUES
     'Chim cần môi trường sạch và thức ăn phù hợp...',
     'https://example.com/post4.jpg',
     20,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2872,8 +2316,8 @@ VALUES
     'Thực phẩm bổ sung giúp thú cưng khỏe mạnh hơn...',
     'https://example.com/post5.jpg',
     10,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2894,8 +2338,8 @@ VALUES
     'Đồ chơi phù hợp giúp mèo giảm stress và tăng vận động...',
     'https://example.com/post6.jpg',
     25,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2916,8 +2360,8 @@ VALUES
     'Rottweiler rất trung thành và bảo vệ tốt...',
     'https://example.com/post7.jpg',
     30,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2938,8 +2382,8 @@ VALUES
     'Kỳ nhông cần được kiểm tra sức khỏe định kỳ...',
     'https://example.com/post8.jpg',
     12,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2960,8 +2404,8 @@ VALUES
     'Chim vành khuyên rất năng động và cần môi trường sạch...',
     'https://example.com/post9.jpg',
     18,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `posts` (
@@ -2982,8 +2426,8 @@ VALUES
     'Rùa cạn cần chế độ ăn đặc biệt và môi trường thích hợp...',
     'https://example.com/post10.jpg',
     22,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
@@ -3017,8 +2461,8 @@ VALUES
     'DOGFOOD_VN0012',
     1,
     'https://example.com/dogfood_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3043,12 +2487,12 @@ VALUES
     'Đồ chơi thông minh cho mèo',
     'Giúp mèo hoạt động và giảm căng thẳng',
     120000.00,
-    79,
+    80,
     'CATTOY_VN0013',
     1,
     'https://example.com/cattoy_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 05:28:02'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3073,12 +2517,12 @@ VALUES
     'Thức ăn cho mèo lông dài',
     'Bổ sung Omega 3 và 6 cho lông mượt',
     250000.00,
-    96,
+    100,
     'CATFOOD_VN0014',
     1,
     'https://example.com/catfood_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 05:13:44'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3107,8 +2551,8 @@ VALUES
     'VITAMIN_VN0015',
     1,
     'https://example.com/vitamin_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3137,8 +2581,8 @@ VALUES
     'DOGTOY_VN0016',
     1,
     'https://example.com/dogtoy_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3167,8 +2611,8 @@ VALUES
     'OMEGA_VN0017',
     1,
     'https://example.com/omega_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3197,8 +2641,8 @@ VALUES
     'BIRDFOOD_VN0018',
     1,
     'https://example.com/birdfood_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3223,12 +2667,12 @@ VALUES
     'Dây dắt chó',
     'Chất liệu nylon bền bỉ',
     90000.00,
-    199,
+    200,
     'LEASH_VN0019',
     1,
     'https://example.com/leash_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 05:16:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3257,8 +2701,8 @@ VALUES
     'CALCIUM_VN00110',
     1,
     'https://example.com/calcium_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `products` (
@@ -3287,14 +2731,274 @@ VALUES
     'CATSCRATCH_VN00111',
     1,
     'https://example.com/catscratch_vn1.jpg',
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: reviews
 # ------------------------------------------------------------
 
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    1,
+    3,
+    1,
+    5,
+    'Chất lượng tuyệt vời',
+    'Sản phẩm rất tốt, chó của tôi rất thích!',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    2,
+    4,
+    2,
+    4,
+    'Sản phẩm ổn',
+    'Đồ chơi khá tốt, nhưng màu sắc hơi phai.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    3,
+    7,
+    4,
+    5,
+    'Vitamin tuyệt vời',
+    'Sau khi dùng vitamin, thú cưng của tôi khỏe hơn rất nhiều.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    4,
+    10,
+    5,
+    3,
+    'Sản phẩm tạm được',
+    'Dây dắt hơi nhỏ, phù hợp cho chó nhỏ.',
+    0,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    5,
+    3,
+    6,
+    4,
+    'Khá hài lòng',
+    'Sản phẩm giúp lông chó của tôi mượt mà hơn.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    6,
+    4,
+    7,
+    5,
+    'Chất lượng rất tốt',
+    'Thức ăn cho chim rất phù hợp, chim của tôi rất thích.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    7,
+    7,
+    8,
+    4,
+    'Đáng mua',
+    'Dây dắt chó bền, tuy nhiên giá hơi cao.',
+    0,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    8,
+    10,
+    9,
+    5,
+    'Tuyệt vời',
+    'Bổ sung canxi thực sự hiệu quả.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    9,
+    3,
+    10,
+    5,
+    'Sản phẩm tuyệt vời',
+    'Đồ cào cho mèo cực kỳ chắc chắn và tiện lợi.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
+INSERT INTO
+  `reviews` (
+    `id`,
+    `petOwner_Id`,
+    `product_id`,
+    `rating`,
+    `title`,
+    `comment`,
+    `is_verified_purchase`,
+    `createdAt`,
+    `updatedAt`,
+    `reviewer_id`
+  )
+VALUES
+  (
+    10,
+    4,
+    3,
+    4,
+    'Thức ăn cho mèo ổn',
+    'Mèo của tôi rất thích, nhưng giá hơi cao.',
+    1,
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: users
@@ -3345,7 +3049,7 @@ VALUES
   (
     1,
     'doctor_user',
-    '$2a$10$At1hdfp4wwIiLN60Oxn8pezCzOV1Wm.y1HcU0AdmgNcmCctbctxqi',
+    '$2a$10$Fw4AZsg4cPnnfJsvWpa6Nu//bE4DpqAl8ZLBCWvFWYeNWWSYhVqMi',
     'doctor@example.com',
     '0123456789',
     'Nam',
@@ -3379,8 +3083,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 04:22:38',
-    '2024-11-20 04:22:38'
+    '2024-11-20 05:45:12',
+    '2024-11-20 05:45:12'
   );
 INSERT INTO
   `users` (
@@ -3427,7 +3131,7 @@ VALUES
   (
     2,
     'seller_user',
-    '$2a$10$uXZg/bf5PBsGLk77dpug3.MiYZeWJ8CfH8rQzUf7H2RrdWFFe4z7q',
+    '$2a$10$A6v.esH.nZle0lKzsQLnbOoOwY10exnKaakBESC0jzoR0cjwp14YS',
     'seller@example.com',
     '0987654321',
     'Nữ',
@@ -3461,8 +3165,8 @@ VALUES
     'https://example.com/business_license.jpg',
     'A store specializing in pet products and supplies.',
     1,
-    '2024-11-20 04:22:38',
-    '2024-11-20 04:22:38'
+    '2024-11-20 05:45:12',
+    '2024-11-20 05:45:12'
   );
 INSERT INTO
   `users` (
@@ -3509,7 +3213,7 @@ VALUES
   (
     3,
     'admin_user',
-    '$2a$10$q5H4BnB7MvKWIEha509.7O2Z7mbv7TwMVfI.Rh3g93aaoRO/7LMi.',
+    '$2a$10$a2nLSEI1SnNkNRQRPhrX7udA4/UwgraS.TsUxffqH/WjR7qniYcc2',
     'admin@example.com',
     '0111222333',
     'Khác',
@@ -3543,8 +3247,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 04:22:38',
-    '2024-11-20 04:22:38'
+    '2024-11-20 05:45:12',
+    '2024-11-20 05:45:12'
   );
 INSERT INTO
   `users` (
@@ -3625,8 +3329,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -3707,8 +3411,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -3789,8 +3493,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -3871,8 +3575,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -3953,8 +3657,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -4035,8 +3739,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -4117,8 +3821,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -4199,8 +3903,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -4281,8 +3985,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 INSERT INTO
   `users` (
@@ -4363,8 +4067,8 @@ VALUES
     NULL,
     NULL,
     0,
-    '2024-11-20 11:22:48',
-    '2024-11-20 11:22:48'
+    '2024-11-20 12:45:22',
+    '2024-11-20 12:45:22'
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

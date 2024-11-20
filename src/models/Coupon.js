@@ -14,6 +14,9 @@ const Coupon = sequelize.define(
       type: DataTypes.STRING(50),
       unique: true,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
     description: {
       type: DataTypes.TEXT,
@@ -25,12 +28,24 @@ const Coupon = sequelize.define(
     discount_value: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+      validate: {
+        min: 0,
+      },
     },
     start_date: {
       type: DataTypes.DATE,
+      allowNull: false,
     },
     end_date: {
       type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isAfterStartDate(value) {
+          if (this.start_date && value <= this.start_date) {
+            throw new Error('End date must be after start date.');
+          }
+        },
+      },
     },
     is_active: {
       type: DataTypes.BOOLEAN,
@@ -48,6 +63,23 @@ const Coupon = sequelize.define(
   {
     timestamps: true,
     tableName: 'Coupons',
+
+    hooks: {
+      beforeUpdate: coupon => {
+        const now = new Date();
+        if (coupon.end_date && coupon.end_date < now) {
+          coupon.is_active = false;
+        }
+      },
+
+      afterCreate: coupon => {
+        console.log(`Coupon created: Code ${coupon.code}, Discount Type: ${coupon.discount_type}`);
+      },
+
+      afterUpdate: coupon => {
+        console.log(`Coupon updated: Code ${coupon.code}, Active: ${coupon.is_active}`);
+      },
+    },
   }
 );
 

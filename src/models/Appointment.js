@@ -21,14 +21,25 @@ const Appointment = sequelize.define(
     pet_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Pets',
+        key: 'id',
+      },
     },
     doctor_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
     },
     appointment_date: {
       type: DataTypes.DATE,
       allowNull: false,
+      validate: {
+        isAfter: new Date().toISOString(),
+      },
     },
     appointment_time: {
       type: DataTypes.TIME,
@@ -36,7 +47,6 @@ const Appointment = sequelize.define(
     },
     status: {
       type: DataTypes.ENUM('Đã đặt lịch', 'Đã hoàn thành', 'Đã hủy'),
-      type: DataTypes.STRING(50),
       defaultValue: 'Đã đặt lịch',
     },
     notes: {
@@ -46,6 +56,27 @@ const Appointment = sequelize.define(
   {
     timestamps: true,
     tableName: 'Appointments',
+
+    hooks: {
+      beforeCreate: async appointment => {
+        const now = new Date();
+        const appointmentDate = new Date(appointment.appointment_date);
+
+        if (appointmentDate < now) {
+          throw new Error('Appointment date must be in the future.');
+        }
+      },
+
+      beforeUpdate: async appointment => {
+        if (appointment.status === 'Đã hoàn thành' || appointment.status === 'Đã hủy') {
+          throw new Error('Completed or cancelled appointments cannot be modified.');
+        }
+      },
+
+      afterCreate: appointment => {
+        console.log(`Appointment created: ID ${appointment.id}, Status: ${appointment.status}`);
+      },
+    },
   }
 );
 
