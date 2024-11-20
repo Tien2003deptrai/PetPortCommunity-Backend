@@ -23,6 +23,21 @@ class ProductRepository {
     return Product.findAndCountAll(options);
   }
 
+  async findById(id) {
+    return await Product.findByPk(id);
+  }
+
+  async updateStock(productId, quantityChange, transaction) {
+    const product = await Product.findByPk(productId);
+    if (!product) throw new Error('Product not found');
+
+    const newStock = product.stock_quantity + quantityChange;
+    if (newStock < 0) throw new Error('Insufficient stock');
+
+    product.stock_quantity = newStock;
+    await product.save({ transaction });
+  }
+
   async findProductsByCriteria(whereClause, includeOptions) {
     return Product.findAll({
       where: whereClause,

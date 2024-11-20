@@ -5,33 +5,33 @@ const {
   sendVerificationEmail,
   sendWelcomeEmail,
   sendResetSuccessEmail,
-} = require('../mail/emails');
+} = require('~/mail/emails');
 const { generateRefreshTokenAndSetCookie, generateToken } = require('~/utils/generateToken');
 const UserRepository = require('~/repository/UserRepository');
 const { Op } = require('sequelize');
+const { comparePasswords } = require('~/utils/passwordUtils');
 
 class UserService {
   async register(data, res) {
     const { username, password, email } = data;
 
-    // Gọi Repository để kiểm tra người dùng tồn tại
-    const existingUser = await UserRepository.findOneByCondition({ [Op.or]: [{ email }] });
+    const existingUser = await UserRepository.findOneByCondition({
+      [Op.or]: [{ email }],
+    });
     if (existingUser) throw new Error('Username or email already taken');
 
-    // Hash mật khẩu
-    const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
 
-    // Tạo người dùng mới thông qua Repository
     const newUser = await UserRepository.create({
       username,
-      password: hashedPassword,
+      password,
       email,
       verification_token: verificationToken,
       verification_token_expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
 
     generateRefreshTokenAndSetCookie(res, newUser.id);
+
     await sendVerificationEmail(newUser.email, verificationToken);
 
     return newUser;
@@ -59,9 +59,8 @@ class UserService {
     const { email, password } = data;
 
     const user = await UserRepository.findOneByCondition({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      throw new Error('Invalid credentials');
-    }
+    const isPasswordValid = await comparePasswords(password, user.password);
+    if (!isPasswordValid) throw new Error('Invalid credentials');
 
     const { token, expiresAt } = generateToken(user.id, user.role);
     generateRefreshTokenAndSetCookie(res, user.id);

@@ -1,4 +1,4 @@
-const { Order, OrderItem, Product, Service, OrderService, Op } = require('~/models');
+const { Order, OrderItem, Product, Op } = require('~/models');
 
 class OrderRepository {
   async createOrder(data, transaction) {

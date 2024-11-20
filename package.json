@@ -13,7 +13,8 @@
     "prettier:fix": "prettier --write .",
     "migrate": "sequelize db:migrate",
     "seed": "sequelize db:seed:all",
-    "backup": "node ./src/utils/mysqldumpBackup.js"
+    "backup": "node ./src/utils/mysqldumpBackup.js",
+    "seed-init": "node src/seeders/data-init.js"
   },
   "husky": {
     "hooks": {

@@ -1,30 +1,73 @@
 const orderRepo = require('~/repository/OrderRepository');
+const productRepo = require('~/repository/ProductRepository');
 const sequelize = require('~/models').sequelize;
 
 class OrderService {
   async createOrderProduct({ petOwner_id, items }) {
-    const totalAmount = items.reduce((total, item) => total + item.price * item.quantity, 0);
-
     const transaction = await sequelize.transaction();
+
     try {
+      let totalAmount = 0;
+
+      const orderItems = await Promise.all(
+        items.map(async item => {
+          const product = await productRepo.findById(item.productId);
+          if (!product) {
+            throw new Error(`Product with ID ${item.productId} not found.`);
+          }
+
+          if (product.stock_quantity < item.quantity) {
+            throw new Error(`Insufficient stock for product: ${product.name}`);
+          }
+
+          const unitPrice = product.price;
+          const subtotal = unitPrice * item.quantity;
+          totalAmount += subtotal;
+
+          return {
+            order_id: null,
+            product_id: item.productId,
+            quantity: item.quantity,
+            unit_price: unitPrice,
+            subtotal,
+          };
+        })
+      );
+
+      console.log('Prepared Order Items:', orderItems);
+
       const order = await orderRepo.createOrder(
-        { petOwner_id, total_amount: totalAmount, status: 'Pending' },
+        { petOwner_id, total_amount: totalAmount, status: 'Đang xử lý' },
         transaction
       );
 
-      const orderItems = items.map(item => ({
-        order_id: order.id,
-        product_id: item.productId,
-        quantity: item.quantity,
-        unit_price: item.price,
-        subtotal: item.price * item.quantity,
-      }));
+      console.log('Order created successfully:', order);
+
+      orderItems.forEach(item => {
+        item.order_id = order.id;
+      });
 
       await orderRepo.bulkCreateOrderItems(orderItems, transaction);
+      console.log('Order Items created successfully');
+
+      await Promise.all(
+        items.map(async item => {
+          try {
+            await productRepo.updateStock(item.productId, -item.quantity, transaction);
+          } catch (error) {
+            console.error(`Failed to update stock for product ${item.productId}:`, error.message);
+            throw error;
+          }
+        })
+      );
+
+      console.log('Product stock updated successfully');
 
       await transaction.commit();
+
       return { orderId: order.id, totalAmount };
     } catch (error) {
+      console.error('Transaction failed:', error.message);
       await transaction.rollback();
       throw new Error(error.message);
     }

@@ -9,7 +9,7 @@ router.get('/', OrderController.getAll);
 
 router.post(
   '/products',
-  validate(OrderValidation.createOrderProduct),
+  // validate(OrderValidation.createOrderProduct),
   OrderController.createOrderProduct
 );
 

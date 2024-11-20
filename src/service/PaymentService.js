@@ -14,14 +14,15 @@ class PaymentService {
     const order = await paymentRepo.findOrderWithItems(orderId);
     if (!order) throw new Error('Order not found');
 
+    // Tạo session Stripe với đơn vị tiền tệ là VND
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: order.OrderItems.map(item => ({
         price_data: {
-          currency: 'usd',
+          currency: 'vnd', // Sử dụng VND làm đơn vị tiền tệ
           product_data: { name: item.Product.name },
-          unit_amount: Math.round(item.unit_price * 100),
+          unit_amount: Math.round(item.unit_price), // Không cần nhân với 100
         },
         quantity: item.quantity,
       })),
@@ -29,16 +30,16 @@ class PaymentService {
       cancel_url: cancelUrl,
     });
 
-    await paymentRepo.createPayment({
+    // Lưu thông tin thanh toán vào cơ sở dữ liệu
+    const payment = await paymentRepo.createPayment({
       order_id: orderId,
       amount: order.total_amount,
       payment_method: 'Credit Card',
-      status: 'Pending',
+      status: 'Đang xử lý',
       transaction_id: session.id,
-      payment_date: new Date(),
     });
 
-    return { id: session.id, url: session.url };
+    return { id: session.id, url: session.url, payment };
   }
 
   async updatePaymentStatus(paymentIntentId, status, orderId) {

@@ -59,6 +59,35 @@ const Pet = sequelize.define(
   {
     timestamps: true,
     tableName: 'Pets',
+    hooks: {
+      beforeCreate: pet => {
+        pet.name = pet.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+      },
+
+      beforeUpdate: pet => {
+        pet.name = pet.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+      },
+
+      afterCreate: pet => {
+        console.log(`Pet created: ${pet.name} (Owner ID: ${pet.owner_id})`);
+      },
+
+      afterUpdate: pet => {
+        console.log(`Pet updated: ${pet.name} (Owner ID: ${pet.owner_id})`);
+      },
+
+      beforeDestroy: pet => {
+        if (pet.is_active) {
+          throw new Error('Cannot delete an active pet.');
+        }
+      },
+    },
   }
 );
 

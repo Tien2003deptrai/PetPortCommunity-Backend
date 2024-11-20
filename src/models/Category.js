@@ -19,7 +19,7 @@ const Category = sequelize.define(
     },
     type: {
       type: DataTypes.STRING(100),
-      // type: DataTypes.ENUM('Product', 'Service', 'Pet'),
+      type: DataTypes.ENUM('Thú cưng', 'Dịch vụ', 'Sản phẩm'),
       allowNull: false,
     },
     is_active: {
@@ -38,6 +38,30 @@ const Category = sequelize.define(
         fields: ['is_active'],
       },
     ],
+
+    hooks: {
+      beforeCreate: category => {
+        category.name = category.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+
+        category.type = category.type.trim().toLowerCase();
+      },
+      beforeUpdate: category => {
+        category.name = category.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+        category.type = category.type.trim().toLowerCase();
+      },
+      afterCreate: category => {
+        console.log(`Category created: ${category.name} (${category.type})`);
+      },
+      afterUpdate: category => {
+        console.log(`Category updated: ${category.name} (${category.type})`);
+      },
+    },
   }
 );
 

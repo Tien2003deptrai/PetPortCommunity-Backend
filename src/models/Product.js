@@ -40,11 +40,15 @@ const Product = sequelize.define(
       allowNull: false,
       validate: {
         isDecimal: true,
+        min: 0,
       },
     },
     stock_quantity: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
+      validate: {
+        min: 0,
+      },
     },
     sku: {
       type: DataTypes.STRING(50),
@@ -62,6 +66,35 @@ const Product = sequelize.define(
   {
     timestamps: true,
     tableName: 'Products',
+
+    hooks: {
+      beforeCreate: product => {
+        product.name = product.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+        product.sku = product.sku || `SKU-${Date.now()}`;
+      },
+      beforeUpdate: product => {
+        product.name = product.name
+          .trim()
+          .replace(/\s+/g, ' ')
+          .replace(/^\w/, c => c.toUpperCase());
+      },
+
+      beforeDestroy: product => {
+        if (product.stock_quantity > 0) {
+          throw new Error('Cannot delete a product with stock remaining.');
+        }
+      },
+
+      afterCreate: product => {
+        console.log(`Product created: ${product.name} (ID: ${product.id})`);
+      },
+      afterUpdate: product => {
+        console.log(`Product updated: ${product.name} (ID: ${product.id})`);
+      },
+    },
   }
 );
 
