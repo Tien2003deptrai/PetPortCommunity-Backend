@@ -28,7 +28,7 @@ const ProductValidation = {
       .isInt({ gt: -1 })
       .withMessage('Stock quantity must be a non-negative integer'),
     body('sku').optional().isString().withMessage('SKU must be a valid string'),
-    body('images').optional().isArray().withMessage('Images must be an array of URLs'),
+    body('images').notEmpty().withMessage('Images is required'),
   ],
 
   update: [
