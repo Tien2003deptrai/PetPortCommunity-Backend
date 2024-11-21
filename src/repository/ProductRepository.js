@@ -1,4 +1,5 @@
-const { Product } = require('~/models');
+const { Sequelize } = require('sequelize');
+const { Product, User, Op } = require('~/models');
 
 class ProductRepository {
   async createProduct(data) {
@@ -58,6 +59,30 @@ class ProductRepository {
       order: [[sequelize.literal('avgRating'), 'DESC']],
       limit,
       subQuery: false,
+    });
+  }
+
+  async findProductsBySellerId(sellerId) {
+    return Product.findAll({
+      where: { sales_center_id: sellerId },
+      include: [
+        {
+          model: User,
+          as: 'SalesCenter',
+          attributes: [
+            'id',
+            'full_name',
+            'store_name',
+            'store_address',
+            'store_logo',
+            'business_license',
+            'store_description',
+          ],
+          where: {
+            where: Sequelize.literal(`JSON_CONTAINS(role, '"Seller"')`),
+          },
+        },
+      ],
     });
   }
 }

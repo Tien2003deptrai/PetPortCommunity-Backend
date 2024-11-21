@@ -19,4 +19,6 @@ router.get(
 
 router.get('/:id', ProductController.getProductById);
 
+router.get('/seller/:seller_id', ProductController.getProductsBySellerId);
+
 module.exports = router;

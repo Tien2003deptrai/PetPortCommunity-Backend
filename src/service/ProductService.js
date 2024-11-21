@@ -42,6 +42,14 @@ class ProductService {
   async getTopRatedProducts(limit = 10) {
     return productRepo.getTopRatedProducts(limit);
   }
+
+  async getProductsBySellerId(sellerId) {
+    const products = await productRepo.findProductsBySellerId(sellerId);
+    if (!products || products.length === 0) {
+      throw new Error('No products found for the given seller ID or the user is not a Seller.');
+    }
+    return products;
+  }
 }
 
 module.exports = new ProductService();

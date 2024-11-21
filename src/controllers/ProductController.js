@@ -59,6 +59,16 @@ const ProductController = {
       next(error);
     }
   },
+
+  async getProductsBySellerId(req, res, next) {
+    try {
+      const { seller_id } = req.params;
+      const products = await productService.getProductsBySellerId(seller_id);
+      res.status(200).json({ success: true, data: products });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = ProductController;
