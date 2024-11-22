@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const chalk = require('chalk');
 const helmet = require('helmet');
 const { limiter, corsOptions, passport } = require('./utils');
-const setupSwaggerDocs = require('./swagger/swagger');
+const setupSwaggerDocs = require('./swagger');
 require('module-alias/register');
 // require('./utils/scheduleBackup');
 

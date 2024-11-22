@@ -3,10 +3,10 @@ const UserService = require('~/service/UserService');
 const UserController = {
   async register(req, res, next) {
     try {
-      const newUser = await UserService.register(req.body, res); // Gọi Service layer
+      const newUser = await UserService.register(req.body, res);
       res.status(201).json({ success: true, user: newUser });
     } catch (error) {
-      next(error); // Chuyển lỗi tới middleware
+      next(error);
     }
   },
 
@@ -23,6 +23,18 @@ const UserController = {
     try {
       const result = await UserService.login(req.body, res);
       res.status(200).json({ success: true, ...result });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async logout(req, res, next) {
+    try {
+      res.clearCookie('refreshToken');
+      res.status(200).json({
+        success: true,
+        message: 'Logged out successfully',
+      });
     } catch (error) {
       next(error);
     }
