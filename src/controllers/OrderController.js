@@ -12,10 +12,8 @@ const OrderController = {
 
   async getAll(req, res, next) {
     try {
-      // Lấy dữ liệu từ Service
       const result = await orderService.getAllOrders(req.query);
 
-      // Trả về response bao gồm số trang
       res.status(200).json({
         success: true,
         data: result.data,
@@ -24,7 +22,7 @@ const OrderController = {
         currentPage: result.currentPage,
       });
     } catch (error) {
-      next(error); // Chuyển lỗi đến middleware xử lý
+      next(error);
     }
   },
 
