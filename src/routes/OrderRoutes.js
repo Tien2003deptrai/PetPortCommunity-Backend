@@ -5,7 +5,7 @@ const { OrderValidation } = require('~/validations');
 
 const router = express.Router();
 
-router.get('/', OrderController.getAll);
+router.get('/paniagated', OrderController.getAll);
 
 router.post(
   '/products',

@@ -10,7 +10,7 @@ class OrderRepository {
   }
 
   async findAllOrders(options) {
-    return Order.findAndCountAll({
+    return await Order.findAndCountAll({
       include: [
         {
           model: OrderItem,
@@ -24,7 +24,8 @@ class OrderRepository {
           ],
         },
       ],
-      ...options,
+      limit: options.limit,
+      offset: options.offset,
     });
   }
 

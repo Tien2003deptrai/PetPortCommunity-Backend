@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const createError = require('http-errors');
 const chalk = require('chalk');
 const helmet = require('helmet');
 const { limiter, corsOptions, passport } = require('./utils');
@@ -67,6 +66,7 @@ app.use((req, res, next) => {
 // Global error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
+    success: false,
     status: err.status || 500,
     message: err.message,
   });

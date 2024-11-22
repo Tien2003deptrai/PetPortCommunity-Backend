@@ -38,8 +38,17 @@ class CategoryService {
     }
   }
 
-  async getCategoriesByType(type) {
-    return categoryRepo.findCategoriesByType(type);
+  async getCategoriesByFilters(query) {
+    const filters = {
+      type: query.type || null,
+      name: query.name || null,
+      status: query.status || null,
+    };
+
+    const limit = query.limit ? parseInt(query.limit, 10) : 10;
+    const offset = query.offset ? parseInt(query.offset, 10) : 0;
+
+    return categoryRepo.findAndCountCategories(filters, limit, offset);
   }
 }
 

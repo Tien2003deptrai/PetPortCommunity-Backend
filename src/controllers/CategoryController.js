@@ -48,8 +48,8 @@ const CategoryController = {
 
   async getByType(req, res, next) {
     try {
-      const categories = await categoryService.getCategoriesByType(req.params.type);
-      res.status(200).json({ success: true, data: categories });
+      const result = await categoryService.getCategoriesByFilters(req.query);
+      res.status(200).json({ success: true, total: result.count, data: result.rows });
     } catch (error) {
       next(error);
     }

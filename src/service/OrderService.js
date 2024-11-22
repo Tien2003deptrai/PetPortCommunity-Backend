@@ -75,9 +75,22 @@ class OrderService {
 
   async getAllOrders(query) {
     const { page = 1, limit = 10 } = query;
+
     const offset = (page - 1) * limit;
 
-    return orderRepo.findAllOrders({ limit, offset });
+    const result = await orderRepo.findAllOrders({
+      limit: parseInt(limit, 10),
+      offset: parseInt(offset, 10),
+    });
+
+    const totalPages = Math.ceil(result.count / limit);
+
+    return {
+      totalRecords: result.count,
+      totalPages,
+      currentPage: parseInt(page, 10),
+      data: result.rows,
+    };
   }
 
   async getOrderById(id) {

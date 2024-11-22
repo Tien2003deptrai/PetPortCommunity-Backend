@@ -1,4 +1,4 @@
-const { Category, Product, Pet, Service } = require('~/models');
+const { Category, Product, Pet, Service, Op } = require('~/models');
 
 class CategoryRepository {
   async createCategory(data) {
@@ -40,13 +40,29 @@ class CategoryRepository {
     return { productCount, serviceCount, petCount };
   }
 
-  async findCategoriesByType(type) {
-    return Category.findAll({
-      where: { type },
+  async findAndCountCategories(filters, limit, offset) {
+    const whereClause = {};
+
+    if (filters.type) {
+      whereClause.type = filters.type;
+    }
+
+    if (filters.name) {
+      whereClause.name = { [Op.like]: `%${filters.name}%` };
+    }
+
+    if (filters.status) {
+      whereClause.status = filters.status;
+    }
+
+    return Category.findAndCountAll({
+      where: whereClause,
       include: [
         { model: Product, as: 'CategoryProducts' },
         { model: Pet, as: 'CategoryPets' },
       ],
+      limit,
+      offset,
     });
   }
 }
