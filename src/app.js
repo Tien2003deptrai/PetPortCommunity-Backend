@@ -7,15 +7,13 @@ const helmet = require('helmet');
 const { limiter, corsOptions, passport } = require('./utils');
 const setupSwaggerDocs = require('./swagger');
 require('module-alias/register');
+
 // require('./utils/scheduleBackup');
 
 require('dotenv').config();
 
 // Middleware
-const { noCacheMiddleware } = require('./middlewares');
 
-// Models
-// Initialize app
 const app = express();
 
 // Essential middleware
@@ -26,7 +24,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(limiter);
 app.use(passport.initialize());
-app.use(noCacheMiddleware); // Apply to all routes
+// app.use(noCacheMiddleware); // Apply to all routes
 
 // Logging with morgan and chalk
 app.use(
@@ -46,21 +44,11 @@ app.use('/api/v1', require('./routes/index'));
 
 setupSwaggerDocs(app);
 
-//
-
 // API routes
 app.get('/index', (req, res) => {
   res.status(200).json({
     message: 'Welcome to the pet management system!',
   });
-});
-
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    "script-src 'self' 'unsafe-inline' chrome-extension://be05ad2b-262c-45a9-b74d-150144d91459"
-  );
-  next();
 });
 
 // Global error handler

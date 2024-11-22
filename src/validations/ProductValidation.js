@@ -33,20 +33,38 @@ const ProductValidation = {
 
   update: [
     param('id').isInt().withMessage('Product ID must be a valid integer'),
+
     body('sales_center_id')
       .optional()
       .isInt()
       .withMessage('Sales Center ID must be a valid integer'),
+
     body('category_id').optional().isInt().withMessage('Category ID must be a valid integer'),
-    body('name').optional().isString().withMessage('Name must be a valid string'),
+
+    body('name')
+      .optional()
+      .isString()
+      .trim()
+      .isLength({ min: 3 })
+      .withMessage('Name must be a string with at least 3 characters'),
+
     body('description').optional().isString().withMessage('Description must be a valid string'),
+
     body('price').optional().isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
     body('stock_quantity')
       .optional()
       .isInt({ gt: -1 })
       .withMessage('Stock quantity must be a non-negative integer'),
-    body('sku').optional().isString().withMessage('SKU must be a valid string'),
-    body('images').optional().isArray().withMessage('Images must be an array of URLs'),
+
+    body('sku')
+      .optional()
+      .isString()
+      .trim()
+      .isLength({ max: 50 })
+      .withMessage('SKU must be a valid string with a maximum of 50 characters'),
+
+    body('images').optional().isURL().withMessage('Images must be a valid URL'),
   ],
 
   getById: [param('id').isInt().withMessage('Product ID must be a valid integer')],

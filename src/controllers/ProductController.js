@@ -19,6 +19,29 @@ const ProductController = {
     }
   },
 
+  async updateProduct(req, res, next) {
+    try {
+      const productId = req.params.id;
+      const updateData = req.body;
+
+      const updatedProduct = await productService.updateProduct(productId, updateData);
+      res.status(200).json({ success: true, data: updatedProduct });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async deleteProduct(req, res, next) {
+    try {
+      const productId = req.params.id;
+
+      await productService.deleteProduct(productId);
+      res.status(200).json({ success: true, message: 'Product deleted successfully' });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async getPaginatedProducts(req, res, next) {
     const { limit = 10, page = 1 } = req.query;
     try {

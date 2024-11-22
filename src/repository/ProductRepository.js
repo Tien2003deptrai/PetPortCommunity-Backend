@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const { Product, User, Op } = require('~/models');
+const { Product, User, sequelize, Category, Review } = require('~/models');
 
 class ProductRepository {
   async createProduct(data) {
@@ -18,6 +18,30 @@ class ProductRepository {
         { model: User, as: 'SalesCenter', attributes: ['id', 'full_name'] },
       ],
     });
+  }
+
+  async findProductByIdPrimary(id) {
+    return Product.findByPk(id);
+  }
+
+  async updateProduct(productId, updateData) {
+    const [updatedCount] = await Product.update(updateData, {
+      where: { id: productId },
+    });
+
+    if (updatedCount === 0) {
+      throw new Error('Product not found or no changes applied');
+    }
+
+    return Product.findByPk(productId);
+  }
+
+  async deleteProduct(productId) {
+    const product = await Product.findByPk(productId);
+    if (!product) throw new Error('Product not found');
+
+    await product.destroy();
+    return product;
   }
 
   async findAndCountProducts(options) {

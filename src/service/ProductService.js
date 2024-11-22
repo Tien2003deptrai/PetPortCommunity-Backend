@@ -12,6 +12,32 @@ class ProductService {
     return product;
   }
 
+  async updateProduct(productId, updateData) {
+    if (updateData.category_id) {
+      const categoryExists = await Category.findByPk(updateData.category_id);
+      if (!categoryExists) {
+        throw new Error('Category not found');
+      }
+    }
+
+    if (updateData.sales_center_id) {
+      const sellerExists = await User.findByPk(updateData.sales_center_id, {
+        where: { role: { [Op.contains]: ['Seller'] } },
+      });
+      if (!sellerExists) {
+        throw new Error('Sales center not found or not a valid seller');
+      }
+    }
+
+    const updatedProduct = await productRepo.updateProduct(productId, updateData);
+    return updatedProduct;
+  }
+
+  async deleteProduct(productId) {
+    const product = await productRepo.deleteProduct(productId);
+    return product;
+  }
+
   async getPaginatedProducts(limit, page) {
     const offset = (page - 1) * limit;
     const options = {
