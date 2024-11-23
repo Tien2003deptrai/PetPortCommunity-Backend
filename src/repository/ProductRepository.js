@@ -20,10 +20,6 @@ class ProductRepository {
     });
   }
 
-  async findProductByIdPrimary(id) {
-    return Product.findByPk(id);
-  }
-
   async updateProduct(productId, updateData) {
     const [updatedCount] = await Product.update(updateData, {
       where: { id: productId },
