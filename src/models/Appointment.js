@@ -49,6 +49,10 @@ const Appointment = sequelize.define(
       type: DataTypes.ENUM('Đã đặt lịch', 'Đã hoàn thành', 'Đã hủy'),
       defaultValue: 'Đã đặt lịch',
     },
+    // cancel_reason: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
     notes: {
       type: DataTypes.TEXT,
     },

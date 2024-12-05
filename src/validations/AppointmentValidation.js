@@ -40,11 +40,11 @@ const AppointmentValidation = {
       .isInt()
       .withMessage('Appointment ID must be a valid integer'),
 
-    body('appointment_date').optional().isISO8601().withMessage('Appointment date must be valid'),
-    body('appointment_time').notEmpty().withMessage('Appointment time is required'),
+    // body('appointment_date').optional().isISO8601().withMessage('Appointment date must be valid'),
+    // body('appointment_time').notEmpty().withMessage('Appointment time is required'),
     body('status')
       .optional()
-      .isIn(['Đã đặt lịch', 'Hoàn thành', 'Đã lên lịch lại', 'Huỷ'])
+      .isIn(['Đã đặt lịch', 'Đã hoàn thành', 'Đã lên lịch lại', 'Đã hủy'])
       .withMessage('Status must be one of Đã đặt lịch, Hoàn thành, Đã lên lịch lại, Huỷ'),
 
     body('notes')

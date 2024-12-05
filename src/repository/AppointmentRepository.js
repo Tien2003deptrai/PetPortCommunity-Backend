@@ -19,11 +19,19 @@ class AppointmentRepository {
           model: Pet,
           as: 'Pet',
           include: [
-            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            {
+              model: User,
+              as: 'PetOwner',
+              attributes: ['id', 'username', 'full_name', 'email', 'phone'],
+            },
             { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
           ],
         },
-        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+        {
+          model: User,
+          as: 'Doctor',
+          attributes: ['id', 'username', 'full_name', 'email', 'phone', 'clinic_address'],
+        },
       ],
       ...options,
     });
@@ -36,11 +44,19 @@ class AppointmentRepository {
           model: Pet,
           as: 'Pet',
           include: [
-            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            {
+              model: User,
+              as: 'PetOwner',
+              attributes: ['id', 'username', 'full_name', 'email', 'phone'],
+            },
             { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
           ],
         },
-        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+        {
+          model: User,
+          as: 'Doctor',
+          attributes: ['id', 'username', 'full_name', 'email', 'phone', 'clinic_address'],
+        },
       ],
     });
   }
@@ -72,11 +88,19 @@ class AppointmentRepository {
           model: Pet,
           as: 'Pet',
           include: [
-            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            {
+              model: User,
+              as: 'PetOwner',
+              attributes: ['id', 'username', 'full_name', 'email', 'phone'],
+            },
             { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
           ],
         },
-        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+        {
+          model: User,
+          as: 'Doctor',
+          attributes: ['id', 'username', 'full_name', 'email', 'phone', 'clinic_address'],
+        },
       ],
     });
   }
@@ -89,11 +113,19 @@ class AppointmentRepository {
           model: Pet,
           as: 'Pet',
           include: [
-            { model: User, as: 'PetOwner', attributes: ['id', 'username', 'full_name', 'email'] },
+            {
+              model: User,
+              as: 'PetOwner',
+              attributes: ['id', 'username', 'full_name', 'email', 'phone'],
+            },
             { model: Category, as: 'Category', attributes: ['id', 'name', 'type'] },
           ],
         },
-        { model: User, as: 'Doctor', attributes: ['id', 'username', 'full_name', 'email'] },
+        {
+          model: User,
+          as: 'Doctor',
+          attributes: ['id', 'username', 'full_name', 'email', 'phone', 'clinic_address'],
+        },
       ],
     });
   }
