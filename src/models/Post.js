@@ -56,8 +56,8 @@ const Post = sequelize.define(
       beforeCreate: post => {
         post.title = post.title.trim();
         post.content = post.content.trim();
-        if (!post.image_url) {
-          post.image_url = 'https://cdn.pixabay.com/photo/2023/08/18/15/01/cat-8198717_640.jpg';
+        if (post.image_url) {
+          post.image_url = post.image_url;
         }
       },
 
