@@ -71,6 +71,26 @@ const AdminService = {
       user: updatedUser,
     };
   },
+
+  async getPendingDoctors() {
+    const pendingDoctors = await AdminRepository.findPendingDoctors();
+    return pendingDoctors;
+  },
+
+  async getRegisteredDoctors() {
+    const registeredDoctors = await AdminRepository.findRegisteredDoctors();
+    return registeredDoctors;
+  },
+
+  async getPendingSellers() {
+    const pendingSellers = await AdminRepository.findPendingSellers();
+    return pendingSellers;
+  },
+
+  async getRegisteredSellers() {
+    const registeredSellers = await AdminRepository.findRegisteredSellers();
+    return registeredSellers;
+  },
 };
 
 module.exports = AdminService;

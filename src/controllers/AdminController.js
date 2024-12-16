@@ -37,7 +37,7 @@ const AdminController = {
     try {
       const { userId } = req.params;
       const result = await AdminService.approveDoctor(userId);
-      res.status(200).json(result);
+      res.status(200).json({ success: true, data: result });
     } catch (error) {
       next(error);
     }
@@ -58,7 +58,56 @@ const AdminController = {
     try {
       const { userId } = req.params;
       const result = await AdminService.approveSeller(userId);
-      res.status(200).json(result);
+      res.status(200).json({ success: true, data: result });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async getPendingDoctors(req, res, next) {
+    try {
+      const pendingDoctors = await AdminService.getPendingDoctors();
+      console.log('pendingDoctors', pendingDoctors);
+      res.status(200).json({
+        success: true,
+        data: pendingDoctors,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async getRegisteredDoctors(req, res, next) {
+    try {
+      const registeredDoctors = await AdminService.getRegisteredDoctors();
+      res.status(200).json({
+        success: true,
+        data: registeredDoctors,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async getPendingSellers(req, res, next) {
+    try {
+      const pendingSellers = await AdminService.getPendingSellers();
+      res.status(200).json({
+        success: true,
+        data: pendingSellers,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async getRegisteredSellers(req, res, next) {
+    try {
+      const registeredSellers = await AdminService.getRegisteredSellers();
+      res.status(200).json({
+        success: true,
+        data: registeredSellers,
+      });
     } catch (error) {
       next(error);
     }
