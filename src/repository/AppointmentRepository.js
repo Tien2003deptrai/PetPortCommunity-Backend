@@ -57,13 +57,6 @@ class AppointmentRepository {
     return Appointment.destroy({ where: { id } });
   }
 
-  async findAppointmentsByStatus(status, options) {
-    return Appointment.findAll({
-      where: { status },
-      ...options,
-    });
-  }
-
   async findAppointmentsByPetOwner(petOwnerId, options) {
     return Appointment.findAll({
       where: { pet_owner_id: petOwnerId },

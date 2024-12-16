@@ -35,10 +35,6 @@ class PetService {
     return petRepo.findPetsByCategory(category_id);
   }
 
-  async getPetsByGender(gender) {
-    return petRepo.findPetsByGender(gender);
-  }
-
   async countPets() {
     return petRepo.countPets();
   }

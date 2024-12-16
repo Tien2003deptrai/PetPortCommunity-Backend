@@ -65,15 +65,6 @@ const PetController = {
     }
   },
 
-  async getPetsByGender(req, res, next) {
-    try {
-      const pets = await petService.getPetsByGender(req.params.gender);
-      res.status(200).json({ success: true, data: pets });
-    } catch (error) {
-      next(error);
-    }
-  },
-
   async countPets(req, res, next) {
     try {
       const totalPets = await petService.countPets();

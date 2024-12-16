@@ -84,6 +84,7 @@ const User = sequelize.define(
     verification_token_expires_at: {
       type: DataTypes.DATE,
     },
+
     cccd: {
       type: DataTypes.STRING(12),
       allowNull: true,

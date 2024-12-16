@@ -69,15 +69,6 @@ const AppointmentController = {
     }
   },
 
-  async getByStatus(req, res, next) {
-    try {
-      const appointments = await appointmentService.getAppointmentsByStatus(req.params.status);
-      res.status(200).json({ success: true, data: appointments });
-    } catch (error) {
-      next(error);
-    }
-  },
-
   async checkConflict(req, res, next) {
     try {
       const conflict = await appointmentService.checkAppointmentConflict(req.body);

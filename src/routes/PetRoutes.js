@@ -29,10 +29,4 @@ router.get(
   PetController.getPetsByCategory
 );
 
-router.get(
-  '/gender/:gender',
-  validate(PetValidation.getPetsByGender),
-  PetController.getPetsByGender
-);
-
 module.exports = router;

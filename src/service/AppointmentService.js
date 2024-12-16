@@ -52,12 +52,6 @@ class AppointmentService {
     const options = { order: [['appointment_date', 'ASC']] };
     return appointmentRepo.findAppointmentsByDoctor(doctorId, options);
   }
-
-  async getAppointmentsByStatus(status) {
-    const options = { order: [['appointment_date', 'ASC']] };
-    return appointmentRepo.findAppointmentsByStatus(status, options);
-  }
-
   async checkAppointmentConflict(data) {
     const { doctor_id, appointment_date } = data;
     const startDate = new Date(appointment_date);

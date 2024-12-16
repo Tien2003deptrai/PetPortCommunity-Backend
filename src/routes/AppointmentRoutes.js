@@ -26,12 +26,6 @@ router.get(
   AppointmentController.getByDoctor
 );
 
-router.get(
-  '/status/:status',
-  validate(AppointmentValidation.getByStatus),
-  AppointmentController.getByStatus
-);
-
 router.post(
   '/check-conflict',
   validate(AppointmentValidation.checkAppointmentConflict),

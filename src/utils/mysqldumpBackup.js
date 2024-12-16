@@ -20,7 +20,7 @@ async function backupDatabase() {
       connection: {
         host: 'localhost', // Địa chỉ server MySQL
         user: 'root', // Tên user MySQL
-        password: 'Tien2003@', // Mật khẩu MySQL
+        password: 'Tien2003@@', // Mật khẩu MySQL
         database: 'a_new1', // Tên database
       },
       dumpToFile: backupFile, // Đường dẫn file dump
