@@ -43,10 +43,10 @@ const Comment = sequelize.define(
         fields: ['post_id'], // Index giúp truy vấn nhanh theo bài viết
         name: 'idx_post_id',
       },
-      {
-        fields: ['petOwner_Id'], // Index giúp truy vấn nhanh theo người dùng
-        name: 'idx_petOwner_id',
-      },
+      // {
+      //   fields: ['petOwner_Id'], // Index giúp truy vấn nhanh theo người dùng
+      //   name: 'idx_petOwner_id',
+      // },
     ],
 
     hooks: {
