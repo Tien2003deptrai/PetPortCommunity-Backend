@@ -112,6 +112,25 @@ const AdminRepository = {
       ],
     });
   },
+
+  async getAllPetOwners() {
+    return await User.findAll({
+      where: {
+        role: {
+          [Op.and]: [sequelize.literal(`JSON_CONTAINS(role, '"PetOwner"')`)],
+        },
+      },
+      attributes: [
+        'full_name',
+        'email',
+        'phone',
+        'gender',
+        'address',
+        'date_of_birth',
+        'avatar_url',
+      ],
+    });
+  },
 };
 
 module.exports = AdminRepository;

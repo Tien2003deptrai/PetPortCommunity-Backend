@@ -70,7 +70,7 @@ class OrderRepository {
             {
               model: Product,
               as: 'Product',
-              attributes: ['name', 'price'],
+              attributes: ['name', 'price', 'images'],
             },
           ],
         },

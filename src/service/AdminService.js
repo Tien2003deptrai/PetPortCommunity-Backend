@@ -91,6 +91,11 @@ const AdminService = {
     const registeredSellers = await AdminRepository.findRegisteredSellers();
     return registeredSellers;
   },
+
+  async getAllPetOwners() {
+    const petOwners = await AdminRepository.getAllPetOwners();
+    return petOwners;
+  },
 };
 
 module.exports = AdminService;

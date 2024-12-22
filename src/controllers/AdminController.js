@@ -112,6 +112,15 @@ const AdminController = {
       next(error);
     }
   },
+
+  async getAllPetOwners(req, res, next) {
+    try {
+      const petOwners = await AdminService.getAllPetOwners();
+      res.status(200).json(petOwners);
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = AdminController;

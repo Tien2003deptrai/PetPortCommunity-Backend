@@ -1,9 +1,11 @@
 exports.authorizeRole = roles => (req, res, next) => {
-  const userRole = req.user.role;
-  console.log('User role:', userRole);
+  const userRoles = req.user.role; // userRoles là một mảng
+  console.log('User roles:', userRoles);
 
-  if (roles.includes(userRole)) {
+  // Kiểm tra nếu ít nhất một vai trò của người dùng nằm trong danh sách roles
+  if (userRoles.some(role => roles.includes(role))) {
     return next();
   }
+
   return res.status(403).json({ error: 'Forbidden' });
 };
