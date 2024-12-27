@@ -121,6 +121,7 @@ const AdminRepository = {
         },
       },
       attributes: [
+        'id',
         'full_name',
         'email',
         'phone',

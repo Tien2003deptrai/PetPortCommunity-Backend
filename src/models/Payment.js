@@ -28,7 +28,7 @@ const Payment = sequelize.define(
       },
     },
     payment_method: {
-      type: DataTypes.STRING(100), // Loại thanh toán
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     status: {

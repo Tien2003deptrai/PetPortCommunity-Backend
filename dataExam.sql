@@ -1,0 +1,43 @@
+INSERT INTO Products (sales_center_id, category_id, name, description, price, stock_quantity, sku, images, createdAt, updatedAt)
+VALUES
+       (2, 5, 'Thức ăn cao cấp cho chó', 'Dinh dưỡng đầy đủ cho chó mọi lứa tuổi', 300000, 150, 'DOGFOOD_VN0011', 'https://winsgroup.vn/media/120/catalog/ch%C3%B3%20tr%C6%B0%E1%BB%9Fng%20th%C3%A0nh.jpg', NOW(), NOW()),
+       (4, 6, 'Đồ chơi thông minh cho mèo', 'Giúp mèo hoạt động và giảm căng thẳng', 120000, 80, 'CATTOY_VN0013', 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltkjrzbb2ya214', NOW(), NOW()),
+       (2, 5, 'Thức ăn cho mèo lông dài', 'Bổ sung Omega 3 và 6 cho lông mượt', 250000, 100, 'CATFOOD_VN0014', 'https://www.vietpet.net/wp-content/uploads/2020/07/thuc-an-cho-meo-truong-thanh-long-dai-equilibrio-adult-cat-long-hair.jpg', NOW(), NOW()),
+       (4, 7, 'Vitamin tổng hợp cho thú cưng', 'Giúp thú cưng khỏe mạnh hơn', 180000, 200, 'VITAMIN_VN0015', 'https://www.petmart.vn/wp-content/uploads/2016/01/thuoc-bo-sung-vitamin-tong-hop-cho-cho-vegebrand-fruit-vitamin2.jpg', NOW(), NOW()),
+       (2, 6, 'Bóng đồ chơi cho chó', 'Chất liệu cao su bền, an toàn', 70000, 300, 'DOGTOY_VN0016', 'https://luckypetshop.vn/wp-content/uploads/2020/01/bong-7-sat-cho-cho-meo-5.jpg', NOW(), NOW()),
+       (4, 7, 'Omega 3 cho chó', 'Giúp da và lông khỏe mạnh', 220000, 120, 'OMEGA_VN0017', 'https://thanhtrangpharma.vn/uploads/1%20dong%20vat/1011.jpg', NOW(), NOW()),
+       (4, 10, 'Dây dắt chó', 'Chất liệu nylon bền bỉ', 90000, 200, 'LEASH_VN0019', 'https://www.petmart.vn/wp-content/uploads/2021/08/bo-vong-co-cho-kem-day-dat-cuong-luc-hele-hl-a001c.jpg', NOW(), NOW()),
+       (2, 7, 'Bột canxi cho chó mèo', 'Bổ sung canxi giúp xương chắc khỏe', 150000, 90, 'CALCIUM_VN00110', 'https://www.petmart.vn/wp-content/uploads/2017/09/bot-dinh-duong-canxi-cho-cho-meo-paw-chondroitin-calcium-powder.jpg', NOW(), NOW()),
+       (2, 5, 'Bánh thưởng cho chó', 'Được làm từ thịt bò tươi, ngon miệng', 50000, 250, 'DOGTREAT_VN00112', 'https://pethouse.com.vn/wp-content/uploads/2022/10/9-banh-thuong-cho-cho-meo-Luscious-ho-tro-trong-qua-trinh-huan-luyen-220g-1.jpg', NOW(), NOW()),
+       (4, 8, 'Giày bảo vệ cho chó', 'Giúp bảo vệ chân chó khỏi các bề mặt nóng, cứng', 150000, 150, 'DOGSHOE_VN00113', 'https://down-vn.img.susercontent.com/file/sg-11134201-7rdxx-lzw6h41bw8iw29', NOW(), NOW()),
+       (2, 6, 'Bóng đựng thức ăn cho chó', 'Bóng thông minh giúp chó chơi và ăn cùng lúc', 80000, 180, 'DOGFEEDER_VN00114', 'https://salt.tikicdn.com/cache/280x280/ts/product/0e/6f/83/b2698dd122d1d4865827304737cd4839.jpg', NOW(), NOW()),
+       (4, 5, 'Dây dắt chó đeo cổ', 'Dây dắt chó tiện lợi, nhẹ nhàng', 120000, 220, 'COLLAR_VN00115', 'https://product.hstatic.net/200000264739/product/day_dat_zichen_1cm_1.5cm_b1aa163ca47e4e608aeeadb296a73a79_master.jpg', NOW(), NOW()),
+       (2, 7, 'Thức ăn bổ sung cho chó', 'Cung cấp dưỡng chất cho chó trưởng thành', 230000, 110, 'SUPPLEMENT_VN00116', 'https://cdn.tgdd.vn/Files/2021/04/14/1343337/10-loai-thuc-an-cho-cho-con-dinh-duong-nhat-hien-nay-202104141607304502.jpg', NOW(), NOW()),
+       (2, 5, 'Thức ăn cho chó trưởng thành', 'Cung cấp đầy đủ dinh dưỡng cho chó trưởng thành', 350000, 190, 'DOGADULT_VN00118', 'https://cdn-img-v2.mybota.vn/uploadv2/web/12/12107/product/2019/10/17/04/11/1571285467_pedigree-truong-thanh-bo-500gr.jpg', NOW(), NOW()),
+       (4, 9, 'Bàn chải cho chó', 'Giúp làm sạch lông cho chó', 45000, 210, 'DOGBRUSH_VN00119', 'https://fagopet.vn/storage/p2/gt/p2gtpml411h0efvo36poexp5eagd_ban-chai-danh-rang-cho-cho-1.webp', NOW(), NOW()),
+       (2, 7, 'Thức ăn cho chó con', 'Dinh dưỡng đầy đủ cho chó con', 200000, 170, 'PUPPYFOOD_VN00120', 'https://fagopet.vn/uploads/images/6289c95c9487f626bf2d85ae/thuc-an-cho-cho-con-pedigree-ga-va-trung-400g.webp', NOW(), NOW()),
+       (4, 5, 'Túi xách cho chó', 'Túi xách cho chó tiện dụng', 180000, 120, 'DOGBAG_VN00121', 'https://iupets.vn/wp-content/uploads/2020/05/tui-xach-thu-cung-3.jpg', NOW(), NOW()),
+       (2, 6, 'Đồ chơi nhồi bông cho mèo', 'Đồ chơi mềm mại cho mèo vui chơi', 70000, 230, 'STUFFEDTOY_VN00122', 'https://cunsieupham.com/wp-content/uploads/2020/03/8933274550_1118210482.jpg', NOW(), NOW()),
+       (4, 5, 'Nệm nằm cho chó', 'Nệm êm ái cho chó ngủ ngon', 200000, 130, 'DOGBED_VN00123', 'https://product.hstatic.net/200000264739/product/dem_lot_roi_88888076b8304f3bb8c462a8dee54ce3_master.jpg', NOW(), NOW()),
+       (4, 7, 'Thực phẩm cho chó già', 'Giúp chó già khỏe mạnh và ăn ngon miệng', 300000, 140, 'SENIORDOGFOOD_VN00125', 'https://samyangvietnam.com/wp-content/uploads/2023/12/thuc-an-cho-cho-nutri-plan.jpg', NOW(), NOW()),
+       (2, 6, 'Sữa cho mèo', 'Cung cấp dưỡng chất cho mèo', 150000, 90, 'CATSUPPLEMENT_VN00126', 'https://cdn.tgdd.vn/Files/2021/04/23/1345730/meo-uong-sua-lieu-co-tot-khong-top-7-loai-sua-bot-cho-meo-con-tot-nhat-hien-nay-202206061448102335.jpg', NOW(), NOW()),
+       (4, 5, 'Dây đeo cổ cho chó', 'Dây đeo cổ chất liệu bền bỉ', 80000, 250, 'DOGCOLLAR_VN00127', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmgWeIAOsZXURBRrRC7Y7OahHOCUsf1yBsg&s', NOW(), NOW()),
+       (2, 5, 'Giường nằm cho chó', 'Giường thoải mái cho chó ngủ', 220000, 200, 'DOGCUSHION_VN00128', 'https://chimgogo.com/wp-content/uploads/2019/05/CGG-TI-GTC-002-000-1.jpg', NOW(), NOW()),
+       (4, 5, 'Chăn cho chó', 'Chăn ấm áp cho chó vào mùa đông', 130000, 190, 'DOGBLANKET_VN00129', 'https://luckypetshop.vn/wp-content/uploads/2019/12/chan-cho-cho-meo-bang-nhung-1.jpg', NOW(), NOW()),
+       (2, 8, 'Thức ăn cho thú cưng', 'Dinh dưỡng cho thú cưng mọi lứa tuổi', 120000, 200, 'PETFOOD_VN00130', 'https://cdn.tgdd.vn/Files/2022/03/08/1419010/mua-ngay-do-an-cho-thu-cung-tot-chinh-hang-gia-cuc-tot-tai-bach-hoa-xanh-202203080700181164.jpg', NOW(), NOW()),
+       (2, 7, 'Giày đi cho chó', 'Giúp bảo vệ chân chó khỏi các bề mặt thô', 150000, 110, 'DOGSHOES_VN00132', 'https://pethouse.com.vn/wp-content/uploads/2022/12/giay-di-mua-cho-cho-2-800x800.jpg', NOW(), NOW()),
+       (4, 6, 'Chất tẩy rửa cho mèo', 'Chất tẩy rửa giúp vệ sinh cho mèo', 40000, 250, 'CATCLEANER_VN00133', 'https://sieuthihanghoachauau.com/image/632415c143affaf390895783/original.jpg', NOW(), NOW()),
+       (2, 7, 'Dầu gội cho chó', 'Giúp chó sạch sẽ và mượt mà', 120000, 180, 'DOGSHAMPOO_VN00134', 'https://www.vietpet.net/wp-content/uploads/2020/07/dau-goi-cho-cho-meo-professional-pet-products-tearless-pet-shampoo.jpg', NOW(), NOW()),
+       (4, 5, 'Thức ăn bổ sung cho mèo', 'Giúp mèo khỏe mạnh và đẹp lông', 250000, 190, 'CATSUPPLEMENT_VN00135', 'https://product.hstatic.net/200000264739/product/nutri_pocket_mix_1_d008a218320f442ab3bedd3ea4aa6544_large.jpg', NOW(), NOW()),
+       (2, 5, 'Đồ chơi bóng cho chó', 'Bóng chất liệu cao su an toàn cho chó', 90000, 150, 'DOGBALL_VN00136', 'https://vietgiftmarket.com/wp-content/uploads/2019/08/bong-do-choi-danh-cho-cho-meo-ma-dccm158.jpg', NOW(), NOW()),
+       (4, 7, 'Thức ăn cho chó nhỏ', 'Dinh dưỡng dành riêng cho chó nhỏ', 220000, 160, 'SMALLDOGFOOD_VN00137', 'https://www.petmart.vn/wp-content/uploads/2021/06/thuc-an-cho-cho-con-co-nho-royal-canin-mini-puppy2.jpg', NOW(), NOW()),
+       (4, 7, 'Bánh thưởng cho mèo', 'Bánh thưởng cho mèo thích ăn', 50000, 180, 'CATTREATS_VN00139', 'https://pethouse.com.vn/wp-content/uploads/2022/10/banh-thuong-cho-meo-me-o-50g-800x800.jpg', NOW(), NOW()),
+       (2, 8, 'Sữa cho chó', 'Sữa dinh dưỡng cho chó con', 150000, 140, 'PUPPYSUPPLEMENT_VN00140', 'https://fagopet.vn/storage/rd/ci/rdcigaf84ad4gyhewkiwqdmdm3l1_dr-kyan-predogen.jpg', NOW(), NOW()),
+       (4, 6, 'Bộ dụng cụ chăm sóc mèo', 'Dụng cụ giúp chăm sóc mèo dễ dàng', 80000, 200, 'CATCARE_VN00141', 'https://fagopet.vn/storage/9q/lq/9qlqpm34zg3g0r2alkvllkdsgs21_gang-tay-tam-cho-cho-meo-3.webp', NOW(), NOW());
+
+INSERT INTO Pets (owner_id, category_id, name, breed, age, gender, description, medical_history, is_active, images, createdAt, updatedAt)
+VALUES
+    (6, 1, 'Lucky', 'Phốc Sóc', 1, 'Đực', 'Thân thiện và năng động', 'Chích ngừa đầy đủ', TRUE, 'https://cdn.tgdd.vn/Files/2021/04/14/1343203/cach-nuoi-cho-phoc-dung-ky-thuat-ma-ban-can-biet-202104140029565856.jpg', NOW(), NOW()),
+    (6, 2, 'Miu', 'Mèo Ba Tư', 2, 'Cái', 'Trầm tĩnh, thích yên tĩnh', 'Đã chích ngừa dại', TRUE, 'https://cdn.eva.vn/upload/3-2022/images/2022-08-26/image7-1661495595-967-width1180height800.jpg', NOW(), NOW()),
+    (6, 1, 'Bông', 'Chihuahua', 1, 'Đực', 'Rất thông minh và đáng yêu', 'Chích ngừa sổ giun', TRUE, 'https://pethouse.com.vn/wp-content/uploads/2023/06/cho-chihuahua.jpg', NOW(), NOW()),
+   
