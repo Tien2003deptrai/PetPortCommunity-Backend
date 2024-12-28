@@ -1,5 +1,6 @@
 const express = require('express');
 const { AdminController } = require('~/controllers');
+const { authorizeRole } = require('~/middlewares');
 const router = express.Router();
 
 router.post('/avatar', AdminController.updateAvatar);
@@ -14,14 +15,14 @@ router.post('/upgrade-to-seller', AdminController.upgradeToSeller);
 router.post('/approve-seller/:userId', AdminController.approveSeller);
 
 // Lấy danh sách doctor chờ phê duyệt
-router.get('/pending-doctors', AdminController.getPendingDoctors);
+router.get('/pending-doctors', authorizeRole(['Admin']), AdminController.getPendingDoctors);
 // Lấy danh sách doctor đã đăng ký
-router.get('/registered-doctors', AdminController.getRegisteredDoctors);
+router.get('/registered-doctors', authorizeRole(['Admin']), AdminController.getRegisteredDoctors);
 // Lấy danh sách Seller chờ phê duyệt
-router.get('/pending-sellers', AdminController.getPendingSellers);
+router.get('/pending-sellers', authorizeRole(['Admin']), AdminController.getPendingSellers);
 // Lấy danh sách Seller đã đăng ký
-router.get('/registered-sellers', AdminController.getRegisteredSellers);
+router.get('/registered-sellers', authorizeRole(['Admin']), AdminController.getRegisteredSellers);
 
-router.get('/pet-owners', AdminController.getAllPetOwners);
+router.get('/pet-owners', authorizeRole(['Admin']), AdminController.getAllPetOwners);
 
 module.exports = router;

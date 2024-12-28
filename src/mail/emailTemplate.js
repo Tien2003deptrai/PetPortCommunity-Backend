@@ -7,14 +7,14 @@ const VERIFICATION_EMAIL_TEMPLATE = `
   <title>Verify Your Email</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
+  <div style="background: linear-gradient(to right, #2196F3, #1E88E5); padding: 20px; text-align: center;">
     <h1 style="color: white; margin: 0;">Verify Your Email</h1>
   </div>
   <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <p>Hello,</p>
     <p>Thank you for signing up! Your verification code is:</p>
     <div style="text-align: center; margin: 30px 0;">
-      <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #4CAF50;">{verificationCode}</span>
+      <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #2196F3;">{verificationCode}</span>
     </div>
     <p>Enter this code on the verification page to complete your registration.</p>
     <p>This code will expire in 15 minutes for security reasons.</p>
@@ -37,14 +37,14 @@ const PASSWORD_RESET_SUCCESS_TEMPLATE = `
   <title>Password Reset Successful</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
+  <div style="background: linear-gradient(to right, #2196F3, #1E88E5); padding: 20px; text-align: center;">
     <h1 style="color: white; margin: 0;">Password Reset Successful</h1>
   </div>
   <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <p>Hello,</p>
     <p>We're writing to confirm that your password has been successfully reset.</p>
     <div style="text-align: center; margin: 30px 0;">
-      <div style="background-color: #4CAF50; color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; display: inline-block; font-size: 30px;">
+      <div style="background-color: #2196F3; color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; display: inline-block; font-size: 30px;">
         ✓
       </div>
     </div>
@@ -74,7 +74,7 @@ const PASSWORD_RESET_REQUEST_TEMPLATE = `
   <title>Reset Your Password</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
+  <div style="background: linear-gradient(to right, #2196F3, #1E88E5); padding: 20px; text-align: center;">
     <h1 style="color: white; margin: 0;">Password Reset</h1>
   </div>
   <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -82,7 +82,7 @@ const PASSWORD_RESET_REQUEST_TEMPLATE = `
     <p>We received a request to reset your password. If you didn't make this request, please ignore this email.</p>
     <p>To reset your password, click the button below:</p>
     <div style="text-align: center; margin: 30px 0;">
-      <a href="{resetURL}" style="background-color: #4CAF50; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
+      <a href="{resetURL}" style="background-color: #2196F3; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
     </div>
     <p>This link will expire in 1 hour for security reasons.</p>
     <p>Best regards,<br>Your App Team</p>
@@ -110,7 +110,7 @@ const ORDER_PLACED_TEMPLATE = `
                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="550">
                         <tbody>
                             <tr>
-                                <td align="center" style="background-color: hsl(45, 50%, 91%); padding: 20px;">
+                                <td align="center" style="background-color: hsl(210, 50%, 91%); padding: 20px;">
                                     <a href="#" style="text-decoration: none;">
                                         <img src="https://i.ibb.co/8r7FCM1/7cac6b9e60404132a5a99a36d6aaf474-removebg-preview.png"
                                             alt="Logo" style="width: 40%; height: auto;">
@@ -131,19 +131,19 @@ const ORDER_PLACED_TEMPLATE = `
                         We've got your order! Your world is about to look a whole lot better.
                         We'll drop you another email when your order ships.
                     </p>
-                    <h3 style="color: rgb(0, 0, 0); margin-bottom: 5px;">Order Id: <span style="color: rgb(0, 119, 255);">{orderId}</span></h3>
-                    <h3 style="color: rgb(0, 119, 255); margin-top: 0;">Payment Status: <span style="color: rgb(0, 119, 255);">{paymentStatus}</span></h3>
+                    <h3 style="color: rgb(0, 0, 0); margin-bottom: 5px;">Order Id: <span style="color: rgb(33, 150, 243);">{orderId}</span></h3>
+                    <h3 style="color: rgb(33, 150, 243); margin-top: 0;">Payment Status: <span style="color: rgb(33, 150, 243);">{paymentStatus}</span></h3>
                 </td>
             </tr>
             <tr style="text-align: center;">
                 <td style="padding: 20px; background-color: white;">
                     <a href="http://192.46.209.205:3003/"
-                        style="text-decoration: none; color: black; border: 2px solid hsl(46, 72%, 60%); padding: 10px 30px; font-weight: bold;">
+                        style="text-decoration: none; color: black; border: 2px solid hsl(210, 72%, 60%); padding: 10px 30px; font-weight: bold;">
                         Shop More!
                     </a>
                 </td>
             </tr>
-            <tr style="background-color: hsl(46, 72%, 60%); height: 40px; text-align: center; color: white;">
+            <tr style="background-color: hsl(210, 72%, 60%); height: 40px; text-align: center; color: white;">
                 <td>
                     <p style="line-height: 1.5em; margin: 10px 0;">
                         wp_ecom_application

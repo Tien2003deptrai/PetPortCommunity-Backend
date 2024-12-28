@@ -41,7 +41,7 @@ const seedUsers = async () => {
     const users = [
       {
         username: 'Bác Sĩ Lãnh',
-        password: 'hashedpassword1',
+        password: 'Hashedpassword1@',
         email: 'vananh_doctor@gmail.com',
         role: ['PetOwner', 'Doctor'],
         full_name: 'Nguyễn Văn Anh',
@@ -103,7 +103,7 @@ const seedUsers = async () => {
       },
       {
         username: 'Bán Hàng Long Dương',
-        password: 'hashedpassword4',
+        password: 'Hashedpassword4@',
         email: 'hoangha_seller@gmail.com',
         role: ['PetOwner', 'Seller'],
         full_name: 'Hoàng Hà',
@@ -124,7 +124,7 @@ const seedUsers = async () => {
       },
       {
         username: 'Bác sĩ Anh',
-        password: 'hashedpassword5',
+        password: 'hashedpassword5@',
         email: 'phuonganh_doctor@gmail.com',
         role: ['Doctor', 'PetOwner'],
         full_name: 'Hoàng Anh',

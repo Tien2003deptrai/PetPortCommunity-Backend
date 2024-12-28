@@ -19,7 +19,7 @@ router.use('/posts', require('./PostRoutes'));
 router.use('/comments', require('./CommentRoutes'));
 router.use('/reviews', require('./ReviewRoutes'));
 router.use('/coupons', require('./CouponRoutes'));
-router.use('/admin', authenticateJWT, authorizeRole(['Admin']), require('./AdminRoutes'));
+router.use('/admin', authenticateJWT, require('./AdminRoutes'));
 
 // test report
 router.use('/reports', authenticateJWT, require('./ReportRoutes'));

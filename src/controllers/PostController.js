@@ -11,7 +11,7 @@ const PostController = {
   },
 
   async getAll(req, res, next) {
-    const { page = 1, limit = 10 } = req.query;
+    const { page = 1, limit = 20 } = req.query;
     try {
       const posts = await postService.getAllPosts(parseInt(page, 10), parseInt(limit, 10));
       res.status(200).json({ success: true, data: posts.rows, total: posts.count });

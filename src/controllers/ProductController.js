@@ -43,7 +43,7 @@ const ProductController = {
   },
 
   async getPaginatedProducts(req, res, next) {
-    const { limit = 10, page = 1 } = req.query;
+    const { limit = 20, page = 1 } = req.query;
     try {
       const { rows: products, count: totalItems } = await productService.getPaginatedProducts(
         parseInt(limit),
